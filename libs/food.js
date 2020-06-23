@@ -17,12 +17,16 @@ const help = require('./helper');
 // TODO: sort them by their rating
 function Restaurant(obj) {
   this.name = obj.name;
+  this.city = obj.location.city;
+  this.state = obj.location.state;
+  this.country = obj.location.country;
   this.price = obj.price;
   this.rating = obj.rating;
   this.url = obj.image_url;
 }
 
 function handler(req, res) {
+
   let search = req.query.search;
   let url = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
@@ -31,6 +35,21 @@ function handler(req, res) {
     limit: 5
   }
 
+  // "location": {
+  //   "address1": "800 N Point St",
+  //   "address2": "",
+  //   "address3": "",
+  //   "city": "San Francisco",
+  //   "zip_code": "94109",
+  //   "country": "US",
+  //   "state": "CA",
+  //   "display_address": [
+  //     "800 N Point St",
+  //     "San Francisco, CA 94109"
+  //   ],
+  //   "cross_streets": ""
+  // },
+
   // grab food data from yelp api
   superagent.get(url)
     .set('Authorization', 'Bearer ' + process.env.YELP_API_KEY)
@@ -38,7 +57,7 @@ function handler(req, res) {
     .then(data => {
       let foodData = data.body.businesses;
       let food = foodData.map(val => new Restaurant(val));
-      res.render('pages/searches.ejs', {
+      res.render('pages/city.ejs', {
         foodData: food
       });
     }).catch(err => help.err(err, res));

@@ -22,13 +22,11 @@ app.use(express.static('./public'));
 
 ////////////////////////MODULES//////////////////////////////
 const food = require('./libs/food.js');
-const location = require('./libs/location.js');
 const help = require('./libs/helper');
 
 ///////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', food.handler);
-app.get('/locations', location.handler);
 
 
 
