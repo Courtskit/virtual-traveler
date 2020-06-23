@@ -4,15 +4,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Virtual Traveler</title>
+  <link rel="stylesheet" href="public/css/reset.css">
+  <link rel="stylesheet" href="public/css/style.css">
 </head>
 
 <body>
-
-  <%- include('../pages/partials/food.ejs') %>
-  <%- include('../pages/partials/locations.ejs') %>
-
-
+  <header>
+    <nav class="">
+      <a href="">Home</a>
+      <a href="">Favorites</a>
+      <a href="">Explore</a>
+    </nav>
+    <h2>CITY NAME GOES HERE</h2>
+  </header>
+  <main>
+    <div id="map">WORLD MAP</div>
+    <div class="infoBox">
+      <nav class="subjectNav">
+        <a href="">City History</a>
+        <a href="">Landmark</a>
+      </nav>
+      <p class="description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
+        debitis culpa numquam architecto
+        dolores, repellat corporis eum minus modi assumenda deleniti eveniet dolor error exercitationem sed nobis! Modi!
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi numquam quo temporibus non aperiam
+        doloremque, esse vitae. Nobis veniam obcaecati suscipit magni. Aperiam excepturi nulla dicta incidunt modi
+        perspiciatis delectus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed sint odit doloremque
+        similique veniam quia iste doloribus. Deleniti nisi dolor perferendis repellat atque minus dolorum nesciunt
+        voluptatum? Ipsa, a temporibus.
+      </p>
+    </div>
+    <div class="infoBox">
+      <nav class="subjectNav">
+        <a href="">Activities</a>
+        <a href="">Restaurants</a>
+        <a href="">Scenic</a>
+      </nav>
+      <section>
+        <p class="description">
+          <%- include('../pages/partials/food.ejs') %>
+          <%- include('../pages/partials/locations.ejs') %>
+        </p>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+  </footer>
 </body>
 
 </html>
