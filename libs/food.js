@@ -14,7 +14,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 const help = require('./helper');
 
 // constructor 
-// sort them by their rating
+// TODO: sort them by their rating
 function Restaurant(obj) {
   this.name = obj.name;
   this.price = obj.price;
