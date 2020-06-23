@@ -1,7 +1,8 @@
+<% console.log(locationData, 'front end console log') %>
 <% locationData.forEach(value => { %>
 <form action="/locations" method="POST">
   <input type=hidden name="locations" value="<%=value.city%>" />
-  <h2><%= value %></h2>
+  <h2><%= value.name %></h2>
   <button class="submitButton" type="submit">Add to
     Favorites</button>
 </form>
