@@ -47,3 +47,7 @@ client.connect()
       console.log(`listening on ${PORT}`);
     })
   })
+
+
+
+module.exports.client = client;
