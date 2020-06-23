@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
-  <link href="base.css" rel="stylesheet" type="text/css" />
-  <link href="layout.css" rel="stylesheet" type="text/css" />
-  <link href="modules.css" rel="stylesheet" type="text/css" />
-  <link href="public/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link href="css/layout.css" rel="stylesheet" type="text/css" />
+  <link href="css/modules.css" rel="stylesheet" type="text/css" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -18,7 +18,11 @@
       <a href="">Favorites</a>
       <a href="">Explore</a>
     </nav>
-    <h2>CITY NAME GOES HERE</h2>
+    <form action="/searches" method="POST"></form>
+    <h2><%= foodData[0].city %></h2>
+    <button class="submitButton" type="submit">Add to
+      Favorites</button>
+    </form>
   </header>
   <main>
     <div id="map">WORLD MAP</div>
@@ -45,7 +49,17 @@
       </nav>
       <section>
         <p class="description"></p>
-        <%= include('../pages/partials/food.ejs') %>
+
+        <% foodData.forEach(value => { %>
+
+
+        <h2><%= value.name %></h2>
+        <h3><%= value.price %></h3>
+        <h4><%= value.rating %></h4>
+        <img src="<%= value.url %>" alt="<%= value.name %>" />
+
+        <% }) %>
+
       </section>
     </div>
   </main>

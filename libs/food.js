@@ -18,6 +18,7 @@ const help = require('./helper');
 function Restaurant(obj) {
   this.name = obj.name;
   this.city = obj.location.city;
+  this.state = obj.location.state;
   this.country = obj.location.country;
   this.price = obj.price;
   this.rating = obj.rating;
@@ -25,10 +26,8 @@ function Restaurant(obj) {
 }
 
 function handler(req, res) {
-  // console.log('HELLO');
-  // console.log(req.query);
+
   let search = req.query.search;
-  console.log(req.query, 'first console log')
   let url = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
     location: search,
@@ -57,7 +56,6 @@ function handler(req, res) {
     .query(queryParams)
     .then(data => {
       let foodData = data.body.businesses;
-      console.log(data.body, 'second console log')
       let food = foodData.map(val => new Restaurant(val));
       res.render('pages/city.ejs', {
         foodData: food
