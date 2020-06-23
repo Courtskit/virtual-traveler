@@ -1,0 +1,9 @@
+<% locationData.forEach(value => { %>
+<form action="/searches" method="POST">
+  <input type=hidden name="locations" value="<%=value.city%>" />
+  <h2><%= value.city %></h2>
+  <h3><%= value.display_name %></h3>
+  <button class="submitButton" type="submit">Add to
+    Favorites</button>
+  <% }) %>
+</form>

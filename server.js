@@ -22,17 +22,23 @@ app.use(express.static('./public'));
 
 ////////////////////////MODULES//////////////////////////////
 const food = require('./libs/food.js');
+const location = require('./libs/location.js');
 const help = require('./libs/helper');
 
 ///////////////////ROUTES//////////////////////
-app.get('/food', food.handler);
-// app.get('/location', );
+app.get('/', searchForm);
+app.get('/searches', food.handler);
+app.get('/searches', location.handler);
+
 
 // Testing
-app.get('/', function (request, response) {
-  response.send('Hello - I like PIZZA')
-})
+// app.get('/', function (request, response) {
+//   response.send('Hello - I like PIZZA')
+// })
 
+function searchForm(request, response) {
+  response.render('pages/index.ejs');
+}
 ///////////////////CONNECT//////////////////////
 client.on('error', err => console.log(err));
 client.connect()

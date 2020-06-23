@@ -19,29 +19,28 @@ function Restaurant(obj) {
   this.name = obj.name;
   this.price = obj.price;
   this.rating = obj.rating;
-  this.url = obj.url;
+  this.url = obj.image_url;
 }
 
 function handler(req, res) {
-
-  let city = req.query.search_query;
+  let search = req.query.search;
   let url = `https://api.yelp.com/v3/businesses/search`;
-
   let queryParams = {
-    location: city,
+    location: search,
     term: 'food',
     limit: 5
   }
 
   // grab food data from yelp api
   superagent.get(url)
-    .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
+    .set('Authorization', 'Bearer ' + process.env.YELP_API_KEY)
     .query(queryParams)
     .then(data => {
-
       let foodData = data.body.businesses;
       let food = foodData.map(val => new Restaurant(val));
-      res.status(200).send(food);
+      res.render('pages/searches.ejs', {
+        foodData: food
+      });
     }).catch(err => help.err(err, res));
 }
 
