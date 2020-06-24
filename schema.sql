@@ -1,38 +1,23 @@
-DROP TABLE IF EXISTS virtual_traveler;
+DROP TABLE IF EXISTS travel;
 
-CREATE TABLE locations
+CREATE TABLE travel
 (
   id SERIAL PRIMARY KEY,
-  search_query VARCHAR(255),
-  formatted_query VARCHAR(255),
-  latitude NUMERIC(10, 7),
-  longitude NUMERIC(10, 7)
+  name VARCHAR(255),
+  image_url VARCHAR(255)
 );
 
-INSERT INTO locations
+INSERT INTO travel
   (
-  search_query,
-  formatted_query,
-  latitude,
-  longitude
+  name,
+  image_url
   )
-
--- CREATE TABLE food
--- (
---   id SERIAL PRIMARY KEY,
---   VARCHAR
---   (255),
---   VARCHAR
---   (255),
--- );
 
 VALUES
   (
-    'Seattle',
-    'Seattle, King County, Washington, USA',
-    '47.6038321',
-    '-122.3300624'
+    'value 1',
+    'value 2'
 );
 
 SELECT *
-FROM virtual_traveler;
+FROM travel;

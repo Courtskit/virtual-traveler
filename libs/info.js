@@ -13,6 +13,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 // helper file module
 const help = require('./helper');
 
+let mapArray = [];
 // constructor 
 // TODO: sort them by their rating
 function Restaurant(obj) {
@@ -35,30 +36,20 @@ function handler(req, res) {
     limit: 5
   }
 
-  // "location": {
-  //   "address1": "800 N Point St",
-  //   "address2": "",
-  //   "address3": "",
-  //   "city": "San Francisco",
-  //   "zip_code": "94109",
-  //   "country": "US",
-  //   "state": "CA",
-  //   "display_address": [
-  //     "800 N Point St",
-  //     "San Francisco, CA 94109"
-  //   ],
-  //   "cross_streets": ""
-  // },
-
   // grab food data from yelp api
   superagent.get(url)
     .set('Authorization', 'Bearer ' + process.env.YELP_API_KEY)
     .query(queryParams)
     .then(data => {
       let foodData = data.body.businesses;
+
+      let coords = data.body.region.center;
+      let coordsArr = [coords.longitude, coords.latitude];
       let food = foodData.map(val => new Restaurant(val));
       res.render('pages/city.ejs', {
-        foodData: food
+        foodData: food,
+        latLng: coordsArr
+
       });
     }).catch(err => help.err(err, res));
 }
