@@ -5,22 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
-  <link href="base.css" rel="stylesheet" type="text/css" />
-  <link href="layout.css" rel="stylesheet" type="text/css" />
-  <link href="modules.css" rel="stylesheet" type="text/css" />
-  <link href="public/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-  <main>
-    <h1>Virtual Traveler</h1>
-    <div>
-      <form class="search-bar" action="/searches" method="get">
-        <input type="text" name="search" placeholder="Type in your destination here" required>
-        <button type="submit">Search</button>
-      </form>
-    </div>
-  </main>
+<body class="mainPageSearch bodyBackgroundCity">
+  <div class="mainTitle">
+    <h1 class="fontShadow">Virtual Traveler</h1>
+    <form class="opacity6" action="/searches" method="get">
+      <input class="curveBorder inputWidth" type="text" name="search" placeholder="Type in your destination here" required>
+      <button class="submitButton curveBorder" type="submit">Search</button>
+    </form>
+  </div>
+  <footer>
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+  </footer>
 </body>
 
 </html>
