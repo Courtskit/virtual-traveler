@@ -23,17 +23,13 @@ app.use(express.static('./public'));
 ////////////////////////MODULES//////////////////////////////
 const info = require('./libs/info.js');
 const help = require('./libs/helper.js');
-const pic = require('./libs/photos.js');
+const cityPic = require('./libs/cityPics.js');
 
 ///////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', info.handler);
-// app.get('/searches', pic.handler)
 app.post('/pages', addToDatabase);
-
-// test
-// app.get('/searches', pic.handler);
-// app.get('/pages/:id', bookRequest);
+app.get('/searches', cityPic.handler);
 
 function searchForm(request, response) {
   response.render('pages/index.ejs');
@@ -64,7 +60,7 @@ function addToDatabase(request, response) {
 
 function locationRequest(request, response) {
   let id = request.params.id;
-  let sql = 'SELECT * FROM books WHERE id=$1;';
+  let sql = 'SELECT * FROM travel WHERE id=$1;';
   let safeValues = [id];
   dbClient.query(sql, safeValues)
     .then(display => {
