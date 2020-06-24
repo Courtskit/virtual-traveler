@@ -4,11 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Virtual Traveler</title>
+  <link href="base.css" rel="stylesheet" type="text/css" />
+  <link href="layout.css" rel="stylesheet" type="text/css" />
+  <link href="modules.css" rel="stylesheet" type="text/css" />
+  <link href="public/css/reset.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-
+  <header>
+    <nav class="">
+      <a href="">Home</a>
+      <a href="">Favorites</a>
+      <a href="">Explore</a>
+    </nav>
+  </header>
+  <main>
+    <section class="single-location">
+      <% homeArray.forEach(value => { %>
+      <form action="/favorites" method="POST">
+        <input type=hidden name="image_url" value="<%=value.image_url%>" />
+        <img src=<%= value.image_url %> alt=<%= value.name %> />
+        <input type=hidden name="name" value="<%=value.name%>" />
+        <p><%= value.name %></p>
+      </form>
+      <!-- <form action="/delete/<%= value.id %>?_method=delete" method="POST">
+        <button>Delete from Favorites</button>
+      </form> -->
+      <% }) %>
+    </section>
+  </main>
+  <footer>
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+  </footer>
 </body>
 
 </html>

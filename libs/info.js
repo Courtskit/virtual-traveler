@@ -13,16 +13,21 @@ const client = new pg.Client(process.env.DATABASE_URL);
 // helper file module
 const help = require('./helper');
 
+let mapArray = [];
 // constructor 
 // TODO: sort them by their rating
 function Restaurant(obj) {
   this.name = obj.name;
+  this.city = obj.location.city;
+  this.state = obj.location.state;
+  this.country = obj.location.country;
   this.price = obj.price;
   this.rating = obj.rating;
   this.url = obj.image_url;
 }
 
 function handler(req, res) {
+
   let search = req.query.search;
   let url = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
@@ -37,9 +42,14 @@ function handler(req, res) {
     .query(queryParams)
     .then(data => {
       let foodData = data.body.businesses;
+
+      let coords = data.body.region.center;
+      let coordsArr = [coords.longitude, coords.latitude];
       let food = foodData.map(val => new Restaurant(val));
-      res.render('pages/searches.ejs', {
-        foodData: food
+      res.render('pages/city.ejs', {
+        foodData: food,
+        latLng: coordsArr
+
       });
     }).catch(err => help.err(err, res));
 }
