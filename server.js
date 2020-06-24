@@ -23,11 +23,10 @@ app.use(express.static('./public'));
 ////////////////////////MODULES//////////////////////////////
 const info = require('./libs/info.js');
 const help = require('./libs/helper.js');
-const map = require('./libs/maps.js');
+
 ///////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', info.handler);
-// app.get('/searches', map.handler);
 app.post('/pages', addToDatabase);
 // app.get('/pages/:id', bookRequest);
 
