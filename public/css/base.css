@@ -1,23 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;500&display=swap');
 
-body {
+.body {
   width: 100%;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 
-main {
+.main {
   margin: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+} 
+
+.bodyBackgroundCity{
+  background: url(img/city4.jpeg);
 }
 
-h2 {
+.cityTitle {
   font-size: 3.5vw;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   margin: 20px auto;
   width: 80%;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mainTitle{
+  font-size: 5vw;
+  letter-spacing: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin: 42vh auto;
+  width: 55vw;
+  color: rgb(255, 255, 255);
+  background-color: rgba(166, 166, 166, 0.344);
+  box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.344);
+}
+
+.fontShadow{
+  text-shadow: 0px 0px 4px rgb(255, 255, 255);
+}
+
+.opacity6{
+  opacity: .6;
+}
+
+.submitButton{
+  background-color: #f9f9f9;
+  border: 1px solid rgba(128, 128, 128, 0.483);
+  color: rgb(84, 84, 84);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.curveBorder{
+  border-radius: 3px;
+  padding: 2px;
+}
+
+
+#mainPageSearch{
+  display: fixed;
+  overflow: hidden;
 }
 
 #map {
@@ -28,7 +75,7 @@ h2 {
   border: 2px solid rgb(205, 205, 205);
 }
 
-div {
+.div {
   width: 42vw;
   height: 45vw;
   margin: auto;
@@ -43,11 +90,15 @@ div {
   margin: auto;
 }
 
-p::-webkit-scrollbar {
+.p::-webkit-scrollbar {
   display: none;
 }
 
-nav {
+.section::-webkit-scrollbar {
+  display: none;
+}
+
+.nav {
   display: flex;
   justify-content: space-evenly;
   font-size: 2vw;
@@ -68,17 +119,25 @@ img {
   width: 30px;
 }
 
+.infoBox {
+  border: .1px solid rgb(227, 227, 227);
+  border-bottom: none;
+  border-top: none;
+  width: 40vw;
+  height: 35vh;
+}
+
 @media screen and (min-width: 736px) {
-  body {
+  .body {
     overflow: hidden;
   }
 
-  main {
+  .main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
-  h2 {
+  .cityTitle {
     font-size: 2.5vw;
   }
 
@@ -93,13 +152,12 @@ img {
     order: 2;
   }
 
-  div:nth-child(2) {
+  .div:nth-child(2) {
     order: 3;
   }
 
   .infoBox {
     border: .1px solid rgb(227, 227, 227);
-    /* margin: 10px 0px 10px 40px;      */
     width: 40vw;
     height: 35vh;
   }
@@ -112,11 +170,11 @@ img {
     margin: auto;
   }
 
-  p::-webkit-scrollbar {
+  .p::-webkit-scrollbar {
     display: none;
   }
 
-  nav {
+  .nav {
     font-size: 1.5vw;
   }
 
@@ -126,4 +184,28 @@ img {
     margin-bottom: .5vh;
   }
 
+  .cityTitle {
+    font-size: 3.5vw;
+    letter-spacing: 5px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .mainTitle{
+    font-weight: 500;
+    width: 50vw;
+    background-color: rgba(166, 166, 166, 0.444);
+    box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.444);
+  }
+
+  .curveBorder{
+    border-radius: 3px;
+    padding: 1%;
+  }
+
+  .inputWidth{
+    width: 22vw;
+  }
 }
