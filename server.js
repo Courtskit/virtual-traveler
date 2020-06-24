@@ -23,30 +23,29 @@ app.use(express.static('./public'));
 ////////////////////////MODULES//////////////////////////////
 const info = require('./libs/info.js');
 const help = require('./libs/helper.js');
-const cityPic = require('./libs/cityPics.js');
 
 ///////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
-app.get('/searches', cityPic.handler);
 
 function searchForm(request, response) {
   response.render('pages/index.ejs');
 }
 
 function addToDatabase(request, response) {
-  let sql = 'SELECT * FROM locations WHERE name = $1;';
-  let safeValue = [request.body.name];
+  console.log(request.body)
+  let name = request.body;
+  let sql = 'SELECT * FROM travel WHERE name = $1;';
+  let safeValue = [name];
   client.query(sql, safeValue)
     .then(result => {
       if (!result.rowCount) {
         let {
-          name,
-          image_url
+          name
         } = request.body;
-        let sqlAdd = 'INSERT INTO locations (name, image_url) VALUES ($1, $2) RETURNING id;';
-        let safeValues = [name, image_url];
+        let sqlAdd = 'INSERT INTO travel (name) VALUES ($1) RETURNING id;';
+        let safeValues = [name];
         client.query(sqlAdd, safeValues)
           .then(store => {
             let id = store.rows[0].id;
@@ -55,7 +54,7 @@ function addToDatabase(request, response) {
       } else {
         response.status(200).redirect(`/pages/${result.rows[0].id}`);
       }
-    })
+    }).catch(error => console.log(error))
 }
 
 function locationRequest(request, response) {
@@ -77,8 +76,5 @@ client.connect()
       console.log(`listening on ${PORT}`);
     })
   })
-
-
-
 
 module.exports.client = client;
