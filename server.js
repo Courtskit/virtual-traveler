@@ -23,13 +23,17 @@ app.use(express.static('./public'));
 ////////////////////////MODULES//////////////////////////////
 const info = require('./libs/info.js');
 const help = require('./libs/helper.js');
+const pic = require('./libs/photos.js');
 
 ///////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', info.handler);
+// app.get('/searches', pic.handler)
 app.post('/pages', addToDatabase);
-// app.get('/pages/:id', bookRequest);
 
+// test
+// app.get('/searches', pic.handler);
+// app.get('/pages/:id', bookRequest);
 
 function searchForm(request, response) {
   response.render('pages/index.ejs');

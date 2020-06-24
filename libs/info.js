@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 3001;
 const client = new pg.Client(process.env.DATABASE_URL);
 
 // helper file module
-const help = require('./helper');
+const help = require('./helper.js');
+const photos = require('./photos.js');
 
 let mapArray = [];
 // constructor 
@@ -26,9 +27,15 @@ function Restaurant(obj) {
   this.url = obj.image_url;
 }
 
+function Photo(obj) {
+  this.img = obj.urls.regular;
+}
+
 function handler(req, res) {
 
   let search = req.query.search;
+  let unsplashUrl = `https://api.unsplash.com/photos?query=${search}&order_by=popular&client_id=${process.env.UNSPLASH_API_KEY}`
+
   let url = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
     location: search,
@@ -42,7 +49,6 @@ function handler(req, res) {
     .query(queryParams)
     .then(data => {
       let foodData = data.body.businesses;
-
       let coords = data.body.region.center;
       let coordsArr = [coords.longitude, coords.latitude];
       let food = foodData.map(val => new Restaurant(val));
@@ -51,6 +57,7 @@ function handler(req, res) {
         latLng: coordsArr
 
       });
+      
     }).catch(err => help.err(err, res));
 }
 
