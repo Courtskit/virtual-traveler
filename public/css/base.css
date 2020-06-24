@@ -14,6 +14,7 @@
 
 .bodyBackgroundCity{
   background: url(img/city4.jpeg);
+  overflow-y: hidden;
 }
 
 .cityTitle {

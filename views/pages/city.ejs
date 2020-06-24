@@ -7,6 +7,8 @@
   <title>Virtual Traveler</title>
   <link href="css/base.css" rel="stylesheet" type="text/css" />
   <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body class="body">
@@ -23,7 +25,22 @@
     </form>
   </header>
   <main class="main">
-    <div class="div" id="map">WORLD MAP</div>
+    <div id="map">
+      <script>
+        var test = '<%- latLng %>';
+        var testArr = test.split(',');
+        testArr[0] = parseFloat(testArr[0]);
+        testArr[1] = parseFloat(testArr[1]);
+        mapboxgl.accessToken =
+          'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: testArr,
+          zoom: 11.15
+        });
+      </script>
+    </div>
     <div class="infoBox div">
       <nav class="subjectNav">
         <a href="">City History</a>
