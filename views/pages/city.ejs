@@ -19,10 +19,10 @@
       <a href="">Favorites</a>
       <a href="">Explore</a>
     </nav>
-    <form action="/searches" method="POST"></form>
-    <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
-        Favorites</button></h2>
-
+    <form action="/pages" method="POST">
+      <input type="hidden" name="name" value="<%= foodData[0].city %>">
+      <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
+          Favorites</button></h2>
     </form>
   </header>
   <main class="main">
@@ -48,7 +48,7 @@
         <a href="">Landmark</a>
       </nav>
       <p class="description p">
-
+        <img src="<%= cityPic %>">
       </p>
     </div>
     <div class="infoBox div">
@@ -62,7 +62,7 @@
         <h5><%= value.name %></h5>
         <h5><%= value.price %></h5>
         <p class="p">Rating:<%= value.rating %>
-          <img src="<%= value.url %>" alt="<%= value.name %>" /></p>
+          <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
         <% }) %>
       </section>
     </div>
