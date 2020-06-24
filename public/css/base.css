@@ -10,7 +10,15 @@
   margin-top: 6px;
 }
 
+.profileImages{
+  width: 5vw;
+}
 
+.footerImages{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 /* - - specific city page - - */
 .body {
   width: 100%;
@@ -125,7 +133,6 @@ img {
 
 /*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
 @media screen and (min-width: 736px) {
-
   /* - - use for all pages - - */
   .nav {
     font-size: 15px;
@@ -170,7 +177,6 @@ img {
     font-size: 1.2vw;
   }
 
-
 /* - - virtual traveler search home page - - */
 
   .virtualTraveler{
@@ -178,7 +184,6 @@ img {
     text-shadow: 0px 0px 5px rgb(255, 255, 255);
     width: 55vw;
   }
-
 
   .curveBorder{
     padding: 1%;
