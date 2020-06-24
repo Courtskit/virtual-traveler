@@ -21,6 +21,7 @@
     </nav>
     <form action="/pages" method="POST">
       <input type="hidden" name="name" value="<%= foodData[0].city %>">
+      <input type="hidden" name="imgUrl" value="<%= cityPic %>">
       <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
           Favorites</button></h2>
     </form>
