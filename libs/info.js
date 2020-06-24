@@ -12,9 +12,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 
 // helper file module
 const help = require('./helper.js');
-const photos = require('./photos.js');
 
-let mapArray = [];
 // constructor 
 // TODO: sort them by their rating
 function Restaurant(obj) {
