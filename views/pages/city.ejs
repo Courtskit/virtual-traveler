@@ -9,6 +9,8 @@
   <link href="css/layout.css" rel="stylesheet" type="text/css" />
   <link href="css/modules.css" rel="stylesheet" type="text/css" />
   <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -25,7 +27,24 @@
     </form>
   </header>
   <main>
-    <div id="map">WORLD MAP</div>
+    <div id="map"></div>
+    <script>
+      var test = '<%- latLng %>';
+      var testArr = test.split(',');
+      testArr[0] = parseFloat(testArr[0]);
+      testArr[1] = parseFloat(testArr[1]);
+      alert(testArr);
+
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: testArr,
+        zoom: 11.15
+      });
+    </script>
+
     <div class="infoBox">
       <nav class="subjectNav">
         <a href="">City History</a>
@@ -51,8 +70,6 @@
         <p class="description"></p>
 
         <% foodData.forEach(value => { %>
-
-
         <h2><%= value.name %></h2>
         <h3><%= value.price %></h3>
         <h4><%= value.rating %></h4>
