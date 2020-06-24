@@ -29,10 +29,14 @@ app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
 
+// function to display the home page when the user opens the website.
 function searchForm(request, response) {
   response.render('pages/index.ejs');
 }
 
+// function to add the selected location to the favorites page. 
+// When the user selected 'add to favorites', the location name and 
+// img url will be pushed into the database. 
 function addToDatabase(request, response) {
   console.log(request.body)
   let name = request.body;
