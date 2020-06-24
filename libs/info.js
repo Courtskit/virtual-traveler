@@ -12,6 +12,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 
 // helper file module
 const help = require('./helper.js');
+const photo = require('./cityPics.js');
 
 // constructor 
 // TODO: sort them by their rating
@@ -22,41 +23,52 @@ function Restaurant(obj) {
   this.country = obj.location.country;
   this.price = obj.price;
   this.rating = obj.rating;
-  this.url = obj.image_url;
+  this.yelpUrl = obj.image_url;
 }
 
+// constructor for city photo
 function Photo(obj) {
-  this.img = obj.urls.regular;
+  this.yelpUrl = obj.photos[0].image.web;
 }
 
-function handler(req, res) {
+// function to grab api data from two separate sources and render them 
+// to the city.ejs file at the same time. 
+async function handler(req, res) {
 
   let search = req.query.search;
-  let unsplashUrl = `https://api.unsplash.com/photos?query=${search}&order_by=popular&client_id=${process.env.UNSPLASH_API_KEY}`
-
-  let url = `https://api.yelp.com/v3/businesses/search`;
+  let yelpUrl = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
     location: search,
     term: 'food',
     limit: 5
   }
 
-  // grab food data from yelp api
-  superagent.get(url)
-    .set('Authorization', 'Bearer ' + process.env.YELP_API_KEY)
-    .query(queryParams)
-    .then(data => {
-      let foodData = data.body.businesses;
-      let coords = data.body.region.center;
-      let coordsArr = [coords.longitude, coords.latitude];
-      let food = foodData.map(val => new Restaurant(val));
-      res.render('pages/city.ejs', {
-        foodData: food,
-        latLng: coordsArr
+  let teleportUrl = `https://api.teleport.org/api/urban_areas/slug:seattle/images/`;
 
-      });
-      
-    }).catch(err => help.err(err, res));
+  // if image does not exist, use this as default image
+  if (!teleportUrl) {
+    teleportUrl = `https://api.teleport.org/api/urban_areas/slug:seattle/images/`;
+  }
+
+  // gather api data from teleport api and yelp api
+  const [data, data2] = await Promise.all([
+    superagent.get(yelpUrl).set('Authorization', 'Bearer ' + process.env.YELP_API_KEY).query(queryParams),
+    superagent.get(teleportUrl)
+  ]).catch(err => console.log('error', err));
+
+  let coords = data.body.region.center;
+  let coordsArr = [coords.longitude, coords.latitude];
+  let foodData = data.body.businesses;
+
+  // create new instances
+  let food = foodData.map(val => new Restaurant(val));
+  let pic = new Photo(data2.body);
+
+  res.render('pages/city.ejs', {
+    foodData: food,
+    latLng: coordsArr,
+    cityPic: pic.yelpUrl
+  });
 }
 
 // export module
