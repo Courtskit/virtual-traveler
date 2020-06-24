@@ -6,34 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
   <link href="css/base.css" rel="stylesheet" type="text/css" />
-  <link href="css/layout.css" rel="stylesheet" type="text/css" />
-  <link href="css/modules.css" rel="stylesheet" type="text/css" />
   <link href="css/reset.css" rel="stylesheet" type="text/css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
-<body>
+<body class="body">
   <header>
-    <nav class="">
+    <nav class="nav">
       <a href="">Home</a>
       <a href="">Favorites</a>
       <a href="">Explore</a>
     </nav>
     <form action="/searches" method="POST"></form>
-    <h2><%= foodData[0].city %></h2>
-    <button class="submitButton" type="submit">Add to
-      Favorites</button>
+    <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
+        Favorites</button></h2>
     </form>
   </header>
-  <main>
+  <main class="main">
     <div id="map">
       <script>
         var test = '<%- latLng %>';
         var testArr = test.split(',');
         testArr[0] = parseFloat(testArr[0]);
         testArr[1] = parseFloat(testArr[1]);
-
         mapboxgl.accessToken =
           'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
         var map = new mapboxgl.Map({
@@ -44,12 +40,12 @@
         });
       </script>
     </div>
-    <div class="infoBox">
+    <div class="infoBox div">
       <nav class="subjectNav">
         <a href="">City History</a>
         <a href="">Landmark</a>
       </nav>
-      <p class="description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
+      <p class="description p"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
         debitis culpa numquam architecto
         dolores, repellat corporis eum minus modi assumenda deleniti eveniet dolor error exercitationem sed nobis! Modi!
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi numquam quo temporibus non aperiam
@@ -59,23 +55,19 @@
         voluptatum? Ipsa, a temporibus.
       </p>
     </div>
-    <div class="infoBox">
+    <div class="infoBox div">
       <nav class="subjectNav">
         <a href="">Activities</a>
         <a href="">Restaurants</a>
         <a href="">Scenic</a>
       </nav>
-      <section>
-        <p class="description"></p>
-
+      <section class="description section">
         <% foodData.forEach(value => { %>
-        <h2><%= value.name %></h2>
-        <h3><%= value.price %></h3>
-        <h4><%= value.rating %></h4>
-        <img src="<%= value.url %>" alt="<%= value.name %>" />
-
+        <h5><%= value.name %></h5>
+        <h5><%= value.price %></h5>
+        <p class="p">Rating:<%= value.rating %>
+          <img src="<%= value.url %>" alt="<%= value.name %>" /></p>
         <% }) %>
-
       </section>
     </div>
   </main>
