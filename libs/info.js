@@ -12,7 +12,6 @@ const client = new pg.Client(process.env.DATABASE_URL);
 
 // helper file module
 const help = require('./helper.js');
-const photo = require('./cityPics.js');
 
 // constructor 
 // TODO: sort them by their rating
@@ -28,7 +27,7 @@ function Restaurant(obj) {
 
 // constructor for city photo
 function Photo(obj) {
-  this.yelpUrl = obj.photos[0].image.web;
+  this.imgUrl = obj.photos[0].image.web;
 }
 
 // function to grab api data from two separate sources and render them 
@@ -67,7 +66,7 @@ async function handler(req, res) {
   res.render('pages/city.ejs', {
     foodData: food,
     latLng: coordsArr,
-    cityPic: pic.yelpUrl
+    cityPic: pic.imgUrl
   });
 }
 
