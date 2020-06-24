@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
   <link href="css/reset.css" rel="stylesheet" type="text/css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />  
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="body">
@@ -19,8 +19,7 @@
       <a href="">Explore</a>
     </nav>
     <form action="/searches" method="POST"></form>
-    <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
-        Favorites</button></h2>
+    <h2 id="cityTitle"><%= foodData[0].city %> <button type="submit"></button></h2>
 
     </form>
   </header>
@@ -41,12 +40,12 @@
         });
       </script>
     </div>
-    <div class="infoBox div">
+    <div class="infoBox">
       <nav class="subjectNav">
         <a href="">City History</a>
         <a href="">Landmark</a>
       </nav>
-      <p class="description p"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
+      <p class="description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
         debitis culpa numquam architecto
         dolores, repellat corporis eum minus modi assumenda deleniti eveniet dolor error exercitationem sed nobis! Modi!
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi numquam quo temporibus non aperiam
@@ -56,17 +55,17 @@
         voluptatum? Ipsa, a temporibus.
       </p>
     </div>
-    <div class="infoBox div">
+    <div class="infoBox">
       <nav class="subjectNav">
         <a href="">Activities</a>
         <a href="">Restaurants</a>
         <a href="">Scenic</a>
       </nav>
-      <section class="description section">
+      <section class="description">
         <% foodData.forEach(value => { %>
         <h5><%= value.name %></h5>
         <h5><%= value.price %></h5>
-        <p class="p">Rating:<%= value.rating %>
+        <p>Rating:<%= value.rating %>
           <img src="<%= value.url %>" alt="<%= value.name %>" /></p>
         <% }) %>
       </section>

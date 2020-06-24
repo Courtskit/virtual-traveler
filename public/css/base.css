@@ -1,9 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;500&display=swap');
 
+/*  - - - - - - TABLET VIEW - - - - - -  */
+
+/* nav bar for all pages */
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2vw;
+  margin-top: 6px;
+}
+
+
+/* - - specific city page - - */
 .body {
   width: 100%;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
 }
 
 .main {
@@ -12,12 +25,7 @@
   grid-template-columns: repeat(2, 1fr);
 } 
 
-.bodyBackgroundCity{
-  background: url(img/city4.jpeg);
-  overflow-y: hidden;
-}
-
-.cityTitle {
+#cityTitle {
   font-size: 3.5vw;
   letter-spacing: 5px;
   margin: 20px auto;
@@ -26,7 +34,60 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.mainTitle{
+#map {
+  grid-column: span 2;
+  margin: 0px auto 15px auto;
+  width: 86vw;
+  height: 36vh;
+  border: 2px solid rgb(205, 205, 205);
+}
+
+.infoBox {
+  border: none;
+  width: 40vw;
+  height: 30%;
+  margin: auto;  
+}
+
+.description {
+  overflow: scroll;
+  font-size: 2vw;
+  height: 40vw;
+  width: 36vw;
+  margin: auto;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.subjectNav {
+  font-size: 1.8vw;
+  padding: 1.4vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(164, 164, 164);
+}
+
+img {
+  width: 14vw;
+}
+
+/* - - virtual traveler search home page - - */
+#bodyBackgroundCity{
+  background-image: url(img/city4.jpeg);
+  overflow-y: hidden;
+  background-size: cover;
+  height: 100vh;
+  display: fixed;
+  overflow: hidden;  
+}
+
+.virtualTravelerBox{
   font-size: 5vw;
   letter-spacing: 4px;
   font-family: 'Montserrat', sans-serif;
@@ -39,7 +100,7 @@
   box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.344);
 }
 
-.fontShadow{
+.whiteFontShadow{
   text-shadow: 0px 0px 4px rgb(255, 255, 255);
 }
 
@@ -62,82 +123,15 @@
   padding: 2px;
 }
 
-
-#mainPageSearch{
-  display: fixed;
-  overflow: hidden;
-}
-
-#map {
-  grid-column: span 2;
-  margin-bottom: 15px;
-  width: 450px;
-  height: 300px;
-  border: 2px solid rgb(205, 205, 205);
-}
-
-.div {
-  width: 42vw;
-  height: 45vw;
-  margin: auto;
-  border: .1px solid rgb(227, 227, 227);
-}
-
-.description {
-  overflow: scroll;
-  font-size: 2vw;
-  height: 40vw;
-  width: 36vw;
-  margin: auto;
-}
-
-.p::-webkit-scrollbar {
-  display: none;
-}
-
-.section::-webkit-scrollbar {
-  display: none;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 2vw;
-}
-
-.subjectNav {
-  padding: 5px;
-  font-size: 1.5vw;
-  margin-bottom: .5vh;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(164, 164, 164);
-}
-
-img {
-  width: 30px;
-}
-
-.infoBox {
-  border: .1px solid rgb(227, 227, 227);
-  border-bottom: none;
-  border-top: none;
-  width: 40vw;
-  height: 35vh;
-}
-
+/*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
 @media screen and (min-width: 736px) {
-  .body {
-    overflow: hidden;
+
+  /* - - use for all pages - - */
+  .nav {
+    font-size: 15px;
   }
 
-  .main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  /* - - specific city page - - */
   .cityTitle {
     font-size: 2.5vw;
   }
@@ -149,11 +143,14 @@ img {
     margin-bottom: none;
     width: 40vw;
     height: 72vh;
-    border: 2px solid rgb(205, 205, 205);
     order: 2;
   }
 
-  .div:nth-child(2) {
+  img {
+    width: 10vw;
+  }
+
+  .infoBox:nth-child(2) {
     order: 3;
   }
 
@@ -164,45 +161,25 @@ img {
   }
 
   .description {
-    overflow: scroll;
     font-size: 1vw;
     height: 30vh;
     width: 36vw;
-    margin: auto;
-  }
-
-  .p::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav {
-    font-size: 1.5vw;
   }
 
   .subjectNav {
-    padding: 5px;
     font-size: 1.2vw;
-    margin-bottom: .5vh;
   }
 
-  .cityTitle {
-    font-size: 3.5vw;
-    letter-spacing: 5px;
-    margin: 20px auto;
-    width: 80%;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .mainTitle{
+
+/* - - virtual traveler search home page - - */
+
+  .virtualTraveler{
     font-weight: 500;
     width: 50vw;
-    background-color: rgba(166, 166, 166, 0.444);
-    box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.444);
+    text-shadow: 0px 0px 5px rgb(255, 255, 255);
   }
 
   .curveBorder{
-    border-radius: 3px;
     padding: 1%;
   }
 
