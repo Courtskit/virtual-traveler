@@ -27,24 +27,23 @@
     </form>
   </header>
   <main>
-    <div id="map"></div>
-    <script>
-      var test = '<%- latLng %>';
-      var testArr = test.split(',');
-      testArr[0] = parseFloat(testArr[0]);
-      testArr[1] = parseFloat(testArr[1]);
-      alert(testArr);
+    <div id="map">
+      <script>
+        var test = '<%- latLng %>';
+        var testArr = test.split(',');
+        testArr[0] = parseFloat(testArr[0]);
+        testArr[1] = parseFloat(testArr[1]);
 
-      mapboxgl.accessToken =
-        'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: testArr,
-        zoom: 11.15
-      });
-    </script>
-
+        mapboxgl.accessToken =
+          'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: testArr,
+          zoom: 11.15
+        });
+      </script>
+    </div>
     <div class="infoBox">
       <nav class="subjectNav">
         <a href="">City History</a>
