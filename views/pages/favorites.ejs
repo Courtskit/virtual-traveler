@@ -5,10 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
-  <link href="base.css" rel="stylesheet" type="text/css" />
-  <link href="layout.css" rel="stylesheet" type="text/css" />
-  <link href="modules.css" rel="stylesheet" type="text/css" />
-  <link href="public/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,7 +18,7 @@
     </nav>
   </header>
   <main>
-    <section class="single-location">
+    <section class="">
       <% homeArray.forEach(value => { %>
       <form action="/favorites" method="POST">
         <input type=hidden name="image_url" value="<%=value.image_url%>" />
