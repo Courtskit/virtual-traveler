@@ -42,10 +42,11 @@ function addToDatabase(request, response) {
     .then(result => {
       if (!result.rowCount) {
         let {
-          name
+          name,
+          imgUrl
         } = request.body;
-        let sqlAdd = 'INSERT INTO travel (name) VALUES ($1) RETURNING id;';
-        let safeValues = [name];
+        let sqlAdd = 'INSERT INTO travel (name, image_url) VALUES ($1, $2) RETURNING id;';
+        let safeValues = [name, imgUrl];
         client.query(sqlAdd, safeValues)
           .then(store => {
             let id = store.rows[0].id;
