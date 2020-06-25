@@ -14,13 +14,12 @@ body{
   background-size: cover;
   height: 100vh;
   display: fixed;
-  overflow: hidden;  
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* NAV BAR IN THE HEADER, STYLE AS NEEDED HERE */
 header {
-  background-color: black;
-  color: white;
   grid-column: 1 / span 8;
   height: 50%;
 }
