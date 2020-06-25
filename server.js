@@ -104,4 +104,5 @@ client.connect()
     })
   })
 
+// export client library to use inside of info.js.
 module.exports.client = client;
