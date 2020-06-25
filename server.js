@@ -67,7 +67,7 @@ function locationRequest(request, response) {
   let id = request.params.id;
   let sql = 'SELECT * FROM travel WHERE id=$1;';
   let safeValues = [id];
-  dbClient.query(sql, safeValues)
+  client.query(sql, safeValues)
     .then(display => {
       response.status(200).render('./pages/favorites.ejs', {
         homeArray: display.rows
