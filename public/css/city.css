@@ -62,6 +62,11 @@
   display: none;
 }
 
+.park-name {
+  text-align: center;
+  margin-top: 15px;
+}
+
 .subjectNav {
   font-size: 1.8vw;
   padding: 1.4vh;
