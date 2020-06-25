@@ -52,7 +52,7 @@ async function handler(req, res) {
 
   // console.log(teleportUrl);
   
-  // gather api data from teleport api and yelp api
+  // gather api data from teleport.org, nps.gov and yelp.com api's
   let data, data2, data3;
   try {
     let teleportUrl = `https://api.teleport.org/api/urban_areas/slug:${search}/images/`;
