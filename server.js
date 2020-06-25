@@ -64,15 +64,17 @@ function addToDatabase(request, response) {
 }
 
 function locationRequest(request, response) {
-  let id = request.params.id;
-  let sql = 'SELECT * FROM travel WHERE id=$1;';
-  let safeValues = [id];
-  client.query(sql, safeValues)
+  // let id = request.params.id;
+  // let sql = 'SELECT * FROM travel WHERE id=$1;';
+  let sql = 'SELECT * FROM travel;';
+  // let safeValues = [id];
+  client.query(sql)
     .then(display => {
+      // console.log(display);
       response.status(200).render('./pages/favorites.ejs', {
-        homeArray: display.rows
+        favorites: display.rows
       });
-    }).catch(error => errorHandler(error, request, response))
+    }).catch(err => help.err(err, response));
 }
 ///////////////////CONNECT//////////////////////
 client.on('error', err => console.log(err));
@@ -84,3 +86,20 @@ client.connect()
   })
 
 module.exports.client = client;
+
+// This is roberts code from 'favorites.ejs'. It needed to be removed from the favorites
+// page temporarily for rendering purposes. 
+
+//  <section class="">
+// <% homeArray.forEach(value => { %>
+// <form action="/favorites" method="POST">
+//   <input type=hidden name="image_url" value="<%=value.image_url%>" />
+//   <img src=<%= value.image_url %> alt=<%= value.name %> />
+//   <input type=hidden name="name" value="<%=value.name%>" />
+//   <p><%= value.name %></p>
+// </form>
+// <form action="/delete/<%= value.id %>?_method=delete" method="POST">
+//   <button>Delete from Favorites</button>
+// </form>
+// <% }) %>
+// </section> 

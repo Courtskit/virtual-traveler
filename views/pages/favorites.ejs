@@ -10,76 +10,38 @@
   <link href="css/favorites.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body id="bodyFavoritesPage">
+<body id="bodyBackgroundCity">
+
   <header>
     <nav class="navSection">
       <a class="mainNav" href="/">Home</a>
       <a class="mainNav" href="">Favorites</a>
+      <a class="mainNav" onclick="history.back()">Back</a>
     </nav>
   </header>
 
-  <!-- <body id="bodyFavoritesPage">
-    <header>
-      <nav id="navFavorites">
-      </nav>
-    </header> -->
+  <main class="main">
 
-
-
-<!-- This section is city photos with captions below. Replace the photo links with our API photo info and render the city name for the caption. -->
-<img src="https://via.placeholder.com/150" id="img1" class="favoriteImages" />
-
-<p class="photoCaption" id="caption1">INSERT CITY NAME HERE</p>
-
-<img src="https://via.placeholder.com/150" id="img2" class="favoriteImages"/>
-
-<p class="photoCaption" id="caption2">INSERT CITY NAME HERE</p>
-
-<img src="https://via.placeholder.com/150" id="img3" class="favoriteImages"/>
-
-<p class="photoCaption" id="caption3">INSERT CITY NAME HERE</p>
-
-<img src="https://via.placeholder.com/150" id="img4" class="favoriteImages"/>
-
-<p class="photoCaption" id="caption4">INSERT CITY NAME HERE</p>
-
-<!-- These are our About photos -->
-<span class="footerImages">
-
-  <a href="https://www.linkedin.com/in/andrew149/"><img class="profileImages" src="css/img/andrew.png" alt=""></a>
-
-  <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/courtney.png"
-      alt=""></a>
-
-  <a href="https://www.linkedin.com/in/dianestephani/"><img class="profileImages" src="css/img/diane.png" alt=""></a>
-
-  <a href="https://www.linkedin.com/in/robert-carter-035baa165/"><img class="profileImages" src="css/img/robert.png"
-      alt=""></a>
-
-</span>
-
-
-    <!-- <section class="">
-      <% homeArray.forEach(value => { %>
-      <form action="/favorites" method="POST">
-        <input type=hidden name="image_url" value="<%=value.image_url%>" />
-        <img src=<%= value.image_url %> alt=<%= value.name %> />
-        <input type=hidden name="name" value="<%=value.name%>" />
-        <p><%= value.name %></p>
-      </form>
-      <form action="/delete/<%= value.id %>?_method=delete" method="POST">
-        <button>Delete from Favorites</button>
-      </form>
-      <% }) %>
-    </section> -->
-
+    <div class="bodyFavoritesPage">
+      <% favorites.forEach(value => { %>
+      <section class="background">
+        <img class="favoriteImages" src="<%= value.image_url %>">
+        <p class="photoCaption"><%= value.name %></p>
+      </section>
+      <% }); %>
+    </div>
     
+  </main>
+
   <span class="footerImages">
     <a href="https://www.linkedin.com/in/andrew149/"><img class="profileImages" src="css/img/andrew.png" alt=""></a>
-    <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/courtney.png" alt=""></a>
+    <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/courtney.png"
+        alt=""></a>
     <a href="https://www.linkedin.com/in/dianestephani/"><img class="profileImages" src="css/img/diane.png" alt=""></a>
-    <a href="https://www.linkedin.com/in/robert-carter-035baa165/"><img class="profileImages" src="css/img/robert.png" alt=""></a>
+    <a href="https://www.linkedin.com/in/robert-carter-035baa165/"><img class="profileImages" src="css/img/robert.png"
+        alt=""></a>
   </span>
+
 </body>
 
 </html>

@@ -29,7 +29,6 @@
   font-weight: 600;
   color: rgb(74, 74, 74);
   text-shadow: .65px .65px .5px rgb(74, 74, 74);
-
 }
 
 #map {
@@ -74,7 +73,7 @@
   justify-content: space-evenly;
 }
 
-a {
+.smallHeader {
   text-decoration: none;
   color: rgb(74, 74, 74);
   font-size: 130%;
