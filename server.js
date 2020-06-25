@@ -28,6 +28,7 @@ const help = require('./libs/helper.js');
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
+app.get('/favorites', locationRequest)
 
 // function to display the home page when the user opens the website.
 function searchForm(request, response) {
