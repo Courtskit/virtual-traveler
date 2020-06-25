@@ -7,10 +7,12 @@ require('dotenv').config();
 const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3001;
+const methodOverride = require('method-override');
 const client = new pg.Client(process.env.DATABASE_URL);
 require('ejs');
 // allows ejs to work - look in views folder for your template
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 
 // this allows us to see the request.body
 app.use(express.urlencoded({
@@ -28,7 +30,22 @@ const help = require('./libs/helper.js');
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
-app.get('/favorites', locationRequest)
+app.get('/favorites', locationRequest);
+app.get('/delete/:travel_id', deleteFavoriteLocation);
+
+// Function to remove a favorited location from the database.
+function deleteFavoriteLocation(request, response) {
+
+  let id = request.params.travel_id;
+  console.log(id);
+  let sql = 'DELETE FROM travel WHERE id=$1;';
+  let safeVals = [id];
+
+  client.query(sql, safeVals)
+    .then(sqlResults => {
+      response.redirect(`/`);
+    }).catch(err => error(err, response));
+}
 
 // function to display the home page when the user opens the website.
 function searchForm(request, response) {
