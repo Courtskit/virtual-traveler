@@ -18,9 +18,12 @@
         <a class="mainNav" href="/">Home</a>
         <a class="mainNav" href="">Favorites</a>
       </nav>
-      <form action="/searches" method="POST"></form>
-      <h2 id="cityTitle"><%= foodData[0].city %> <button type="submit"></button></h2>
-      </form>
+          <form action="/pages" method="POST">
+      <input type="hidden" name="name" value="<%= foodData[0].city %>">
+      <input type="hidden" name="imgUrl" value="<%= cityPic %>">
+      <h2 class="cityTitle"><%= foodData[0].city %> <button type="submit">Add to
+          Favorites</button></h2>
+    </form>
     </header>
     <main class="main">
       <div id="map">
@@ -43,15 +46,8 @@
         <nav class="subjectNav">
           <a href="">Top things todo</a>
         </nav>
-        <p class="description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa mollitia rem
-          debitis culpa numquam architecto
-          dolores, repellat corporis eum minus modi assumenda deleniti eveniet dolor error exercitationem sed nobis!
-          Modi!
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi numquam quo temporibus non aperiam
-          doloremque, esse vitae. Nobis veniam obcaecati suscipit magni. Aperiam excepturi nulla dicta incidunt modi
-          perspiciatis delectus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed sint odit doloremque
-          similique veniam quia iste doloribus. Deleniti nisi dolor perferendis repellat atque minus dolorum nesciunt
-          voluptatum? Ipsa, a temporibus.
+        <p class="description">
+              <img src="<%= cityPic %>">
         </p>
       </div>
       <div class="infoBox">
@@ -63,7 +59,7 @@
           <h5><%= value.name %></h5>
           <h5><%= value.price %></h5>
           <p>Rating:<%= value.rating %>
-            <img src="<%= value.url %>" alt="<%= value.name %>" /></p>
+            <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
           <% }) %>
         </section>
       </div>
@@ -76,6 +72,7 @@
       <img class="profileImages" src="css/img/diane.png" alt="">
       <img class="profileImages" src="css/img/robert.png" alt="">
     </span>
+
 </body>
 
 </html>
