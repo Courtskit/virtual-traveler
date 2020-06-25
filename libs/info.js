@@ -11,9 +11,8 @@ const PORT = process.env.PORT || 3001;
 const client = new pg.Client(process.env.DATABASE_URL);
 
 // helper file module
-const help = require('./helper');
+const help = require('./helper.js');
 
-let mapArray = [];
 // constructor 
 // TODO: sort them by their rating
 function Restaurant(obj) {
@@ -23,36 +22,66 @@ function Restaurant(obj) {
   this.country = obj.location.country;
   this.price = obj.price;
   this.rating = obj.rating;
-  this.url = obj.image_url;
+  this.yelpUrl = obj.image_url;
 }
 
-function handler(req, res) {
+// constructor for city photo
+function Photo(obj) {
+  this.imgUrl = obj.photos[0].image.web;
+}
+
+// constructor for nps gov (parks)
+function Parks(obj) {
+  this.name = obj.name;
+  this.description = obj.operatingHours[0].description
+}
+
+// function to grab api data from two separate sources and render them 
+// to the city.ejs file at the same time. 
+async function handler(req, res) {
 
   let search = req.query.search;
-  let url = `https://api.yelp.com/v3/businesses/search`;
+  let yelpUrl = `https://api.yelp.com/v3/businesses/search`;
   let queryParams = {
     location: search,
     term: 'food',
     limit: 5
   }
 
-  // grab food data from yelp api
-  superagent.get(url)
-    .set('Authorization', 'Bearer ' + process.env.YELP_API_KEY)
-    .query(queryParams)
-    .then(data => {
-      let foodData = data.body.businesses;
+  let npsGovUrl = `https://developer.nps.gov/api/v1/parks?q=${search}&api_key=${process.env.NPS_GOV_API_KEY}&limit=5`
 
-      let coords = data.body.region.center;
-      let coordsArr = [coords.longitude, coords.latitude];
-      let food = foodData.map(val => new Restaurant(val));
-      res.render('pages/city.ejs', {
-        foodData: food,
-        latLng: coordsArr
+  let teleportUrl = `https://api.teleport.org/api/urban_areas/slug:${search}/images/`;
 
-      });
-    }).catch(err => help.err(err, res));
+  // gather api data from teleport api and yelp api
+  const [data, data2, data3] = await Promise.all([
+    superagent.get(yelpUrl).set('Authorization', 'Bearer ' + process.env.YELP_API_KEY).query(queryParams),
+    superagent.get(teleportUrl),
+    superagent.get(npsGovUrl)
+  ]).catch(err => console.log('error', err));
+
+  // compile returned data
+  let parkData = data3.body.data;
+  let coords = data.body.region.center;
+  let coordsArr = [coords.longitude, coords.latitude];
+  let foodData = data.body.businesses;
+
+  // create new instances
+  let parks = parkData.map(val => new Parks(val))
+  let food = foodData.map(val => new Restaurant(val));
+  let pic = new Photo(data2.body);
+
+  // console.log(parks);
+
+  // render all info to city.ejs page
+  res.render('pages/city.ejs', {
+    foodData: food,
+    latLng: coordsArr,
+    cityPic: pic.imgUrl,
+    parkInfo: parks
+  });
 }
 
 // export module
 module.exports.handler = handler;
+
+//TODO: create if logic for city images that do not have a url

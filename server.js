@@ -28,25 +28,29 @@ const help = require('./libs/helper.js');
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
-// app.get('/pages/:id', bookRequest);
 
-
+// function to display the home page when the user opens the website.
 function searchForm(request, response) {
   response.render('pages/index.ejs');
 }
 
+// function to add the selected location to the favorites page. 
+// When the user selected 'add to favorites', the location name and 
+// img url will be pushed into the database. 
 function addToDatabase(request, response) {
-  let sql = 'SELECT * FROM locations WHERE name = $1;';
-  let safeValue = [request.body.name];
+  console.log(request.body)
+  let name = request.body;
+  let sql = 'SELECT * FROM travel WHERE name = $1;';
+  let safeValue = [name];
   client.query(sql, safeValue)
     .then(result => {
       if (!result.rowCount) {
         let {
           name,
-          image_url
+          imgUrl
         } = request.body;
-        let sqlAdd = 'INSERT INTO locations (name, image_url) VALUES ($1, $2) RETURNING id;';
-        let safeValues = [name, image_url];
+        let sqlAdd = 'INSERT INTO travel (name, image_url) VALUES ($1, $2) RETURNING id;';
+        let safeValues = [name, imgUrl];
         client.query(sqlAdd, safeValues)
           .then(store => {
             let id = store.rows[0].id;
@@ -55,12 +59,12 @@ function addToDatabase(request, response) {
       } else {
         response.status(200).redirect(`/pages/${result.rows[0].id}`);
       }
-    })
+    }).catch(error => console.log(error))
 }
 
 function locationRequest(request, response) {
   let id = request.params.id;
-  let sql = 'SELECT * FROM books WHERE id=$1;';
+  let sql = 'SELECT * FROM travel WHERE id=$1;';
   let safeValues = [id];
   dbClient.query(sql, safeValues)
     .then(display => {
@@ -77,8 +81,5 @@ client.connect()
       console.log(`listening on ${PORT}`);
     })
   })
-
-
-
 
 module.exports.client = client;

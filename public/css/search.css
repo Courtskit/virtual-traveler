@@ -1,0 +1,64 @@
+/*  - - - - - - TABLET VIEW - - - - - -  */
+
+/* - - virtual traveler search home page - - */
+#bodyBackgroundCity{
+  background-image: url(img/city4.jpeg);
+  overflow-y: hidden;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;  
+}
+
+.virtualTravelerBox{
+  font-size: 5vw;
+  letter-spacing: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin: 42vh auto;
+  width: 55vw;
+  color: rgb(255, 255, 255);
+  background-color: rgba(166, 166, 166, 0.344);
+  box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.344);
+}
+
+.whiteFontShadow{
+  text-shadow: 0px 0px 4px rgb(255, 255, 255);
+}
+
+.inputSearch{
+  opacity: .6;
+}
+
+.submitButton{
+  background-color: #f9f9f9;
+  border: 1px solid rgba(128, 128, 128, 0.483);
+  color: rgb(84, 84, 84);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.curveBorder{
+  border-radius: 3px;
+  padding: 1px;
+}
+
+/*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
+@media screen and (min-width: 736px) {
+/* - - virtual traveler search home page - - */
+  .virtualTraveler{
+    font-weight: 500;
+    text-shadow: 0px 0px 5px rgb(255, 255, 255);
+    width: 55vw;
+  }
+
+  .curveBorder{
+    padding: 1%;
+  }
+
+  .inputWidth{
+    width: 22vw;
+  }
+}
