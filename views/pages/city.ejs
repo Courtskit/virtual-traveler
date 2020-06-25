@@ -5,75 +5,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Virtual Traveler</title>
-  <link href="css/base.css" rel="stylesheet" type="text/css" />
   <link href="css/reset.css" rel="stylesheet" type="text/css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
-  <script src="jquery-3.5.1.min.js"></script>
+  <link href="css/base.css" rel="stylesheet" type="text/css" />
+  <link href="css/city.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="body">
-  <header>
-    <nav class="nav">
-      <a href="/">Home</a>
-      <a href="">Favorites</a>
-      <a href="">Explore</a>
-    </nav>
-    <form action="/pages" method="POST">
+<body class="body" id="bodyBackgroundCity">
+    <header>
+      <nav class="navSection">
+        <a class="mainNav" href="/">Home</a>
+        <a class="mainNav" href="">Favorites</a>
+      </nav>
+          <form action="/pages" method="POST">
       <input type="hidden" name="name" value="<%= foodData[0].city %>">
       <input type="hidden" name="imgUrl" value="<%= cityPic %>">
-      <h2 class="cityTitle"><%= foodData[0].city %> <button class="submitButton" type="submit">Add to
+      <h2 class="cityTitle"><%= foodData[0].city %> <button type="submit">Add to
           Favorites</button></h2>
     </form>
-  </header>
-  <main class="main">
-    <div id="map">
-      <script>
-        var test = '<%- latLng %>';
-        var testArr = test.split(',');
-        testArr[0] = parseFloat(testArr[0]);
-        testArr[1] = parseFloat(testArr[1]);
-        mapboxgl.accessToken =
-          'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v11',
-          center: testArr,
-          zoom: 11.15
-        });
-      </script>
-    </div>
-    <div class="infoBox div">
-      <nav class="subjectNav">
-        <a href="">City History</a>
-        <a href="">Landmark</a>
-      </nav>
-      <p class="description p">
-        <img src="<%= cityPic %>">
-      </p>
-    </div>
-    <div class="infoBox div">
-      <nav class="subjectNav">
-        <a href="">Activities</a>
-        <a href="">Restaurants</a>
-        <a href="">Scenic</a>
-      </nav>
-      <section class="description section">
-        <% foodData.forEach(value => { %>
-        <h5><%= value.name %></h5>
-        <h5><%= value.price %></h5>
-        <p class="p">Rating:<%= value.rating %>
-          <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
-        <% }) %>
-      </section>
-    </div>
-  </main>
-  <footer>
-    <img src="" alt="">
-    <img src="" alt="">
-    <img src="" alt="">
-    <img src="" alt="">
-  </footer>
+    </header>
+    <main class="main">
+      <div id="map">
+        <script>
+          var test = '<%- latLng %>';
+          var testArr = test.split(',');
+          testArr[0] = parseFloat(testArr[0]);
+          testArr[1] = parseFloat(testArr[1]);
+          mapboxgl.accessToken =
+            'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: testArr,
+            zoom: 11.15
+          });
+        </script>
+      </div>
+      <div class="infoBox">
+        <nav class="subjectNav">
+          <a href="">Top things todo</a>
+        </nav>
+        <p class="description">
+              <img src="<%= cityPic %>">
+        </p>
+      </div>
+      <div class="infoBox">
+        <nav class="subjectNav">
+          <a href="">Top Food</a>
+        </nav>
+        <section class="description">
+          <% foodData.forEach(value => { %>
+          <h5><%= value.name %></h5>
+          <h5><%= value.price %></h5>
+          <p>Rating:<%= value.rating %>
+            <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
+          <% }) %>
+        </section>
+      </div>
+    </main>
+    <span class="footerImages">
+      <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/andrew.png"
+          alt=""></a>
+
+      <img class="profileImages" src="css/img/courtney.png" alt="">
+      <img class="profileImages" src="css/img/diane.png" alt="">
+      <img class="profileImages" src="css/img/robert.png" alt="">
+    </span>
 
 </body>
 
