@@ -28,7 +28,6 @@ function Restaurant(obj) {
 // constructor for city photo
 function Photo(obj) {
   this.imgUrl = obj.photos[0].image.web;
-  
 }
 
 // constructor for nps gov (parks)
@@ -54,9 +53,7 @@ async function handler(req, res) {
   // console.log(teleportUrl);
   
   // gather api data from teleport api and yelp api
-  let data;
-  let data2;
-  let data3;
+  let data, data2, data3;
   try {
     let teleportUrl = `https://api.teleport.org/api/urban_areas/slug:${search}/images/`;
     [data, data2, data3] = await Promise.all([
@@ -85,7 +82,6 @@ async function handler(req, res) {
   let food = foodData.map(val => new Restaurant(val));
   let pic = new Photo(data2.body);
   
-
   // render all info to city.ejs page
   res.render('pages/city.ejs', {
     foodData: food,
@@ -97,5 +93,3 @@ async function handler(req, res) {
 
 // export module
 module.exports.handler = handler;
-
-//TODO: create if logic for city images that do not have a url
