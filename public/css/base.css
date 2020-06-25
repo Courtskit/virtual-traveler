@@ -3,7 +3,7 @@
 /*  - - - - - - TABLET VIEW - - - - - -  */
 
 /* nav bar for all pages */
-.nav {
+nav {
   display: flex;
   justify-content: space-evenly;
   font-size: 2vw;
@@ -134,7 +134,7 @@ img {
 /*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
 @media screen and (min-width: 736px) {
   /* - - use for all pages - - */
-  .nav {
+  nav {
     font-size: 15px;
   }
 
@@ -193,3 +193,22 @@ img {
     width: 22vw;
   }
 }
+
+/* - - Favorites Page - - */
+
+#bodyFavoritesPage {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-rows: 12.5% 12.5% 12.5% 12.5%;
+}
+
+#navFavorites {
+  background-color: black;
+  color: white;
+  grid-column: 3 / span 4;
+  grid-row: 1;
+}
+
