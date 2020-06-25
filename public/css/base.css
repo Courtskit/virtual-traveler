@@ -2,14 +2,7 @@
 
 /*  - - - - - - TABLET VIEW - - - - - -  */
 
-/* nav bar for all pages */
-.nav {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 2vw;
-  margin-top: 6px;
-}
-
+/* FOR ALL PAGES */
 .profileImages{
   width: 5vw;
 }
@@ -19,177 +12,48 @@
   bottom: 0;
   right: 0;
 }
-/* - - specific city page - - */
-.body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
-}
 
-.main {
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-} 
-
-#cityTitle {
-  font-size: 3.5vw;
-  letter-spacing: 5px;
-  margin: 20px auto;
-  width: 80%;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-}
-
-#map {
-  grid-column: span 2;
-  margin: 0px auto 15px auto;
-  width: 86vw;
-  height: 36vh;
-  border: 2px solid rgb(205, 205, 205);
-}
-
-.infoBox {
-  border: none;
-  width: 40vw;
-  height: 30%;
-  margin: auto;  
-}
-
-.description {
-  overflow: scroll;
-  font-size: 2vw;
-  height: 40vw;
-  width: 36vw;
-  margin: auto;
-}
-
-.description::-webkit-scrollbar {
-  display: none;
-}
-
-.subjectNav {
-  font-size: 1.8vw;
-  padding: 1.4vh;
+/* MAIN NAV BAR */
+.navSection {
   display: flex;
   justify-content: space-evenly;
+  font-size: 2vw;
+  height: 4vh;
+  background-color: rgba(166, 166, 166, 0.544);
 }
 
-a {
-  text-decoration: none;
-  color: rgb(164, 164, 164);
-}
-
-img {
-  width: 14vw;
-}
-
-/* - - virtual traveler search home page - - */
-#bodyBackgroundCity{
-  background-image: url(img/city4.jpeg);
-  overflow-y: hidden;
-  background-size: cover;
-  height: 100vh;
-  display: fixed;
-  overflow: hidden;  
-}
-
-.virtualTravelerBox{
-  font-size: 5vw;
-  letter-spacing: 4px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-align: center;
-  margin: 42vh auto;
-  width: 55vw;
+.mainNav{
+  letter-spacing: 1px;
   color: rgb(255, 255, 255);
-  background-color: rgba(166, 166, 166, 0.344);
-  box-shadow: 0px 0px 30px 34px rgba(166, 166, 166, 0.344);
+  line-height: 4vh;
 }
 
-.whiteFontShadow{
-  text-shadow: 0px 0px 4px rgb(255, 255, 255);
-}
-
-.inputSearch{
-  opacity: .6;
-}
-
-.submitButton{
-  background-color: #f9f9f9;
-  border: 1px solid rgba(128, 128, 128, 0.483);
-  color: rgb(84, 84, 84);
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-}
-
-.curveBorder{
-  border-radius: 3px;
-  padding: 1px;
+.mainNav:hover {
+  text-shadow: 0px 0px 2px rgb(255, 255, 255);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
 @media screen and (min-width: 736px) {
   /* - - use for all pages - - */
+  .navSection {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.5vw;
+    height: 5vh;
+    background-color: rgba(166, 166, 166, 0.544);
+  }
+  
+  .mainNav{
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    line-height: 5vh;
+  }
+
   .nav {
     font-size: 15px;
   }
 
-  /* - - specific city page - - */
-  .cityTitle {
-    font-size: 2.5vw;
-  }
-
-  #map {
-    grid-column: none;
-    grid-column-start: 2;
-    grid-row: span 2;
-    margin-bottom: none;
-    width: 40vw;
-    height: 72vh;
-    order: 2;
-  }
-
-  img {
-    width: 10vw;
-  }
-
-  .infoBox:nth-child(2) {
-    order: 3;
-  }
-
-  .infoBox {
-    border: .1px solid rgb(227, 227, 227);
-    width: 40vw;
-    height: 35vh;
-  }
-
-  .description {
-    font-size: 1vw;
-    height: 30vh;
-    width: 36vw;
-  }
-
-  .subjectNav {
-    font-size: 1.2vw;
-  }
-
-/* - - virtual traveler search home page - - */
-
-  .virtualTraveler{
-    font-weight: 500;
-    text-shadow: 0px 0px 5px rgb(255, 255, 255);
-    width: 55vw;
-  }
-
-  .curveBorder{
-    padding: 1%;
-  }
-
-  .inputWidth{
-    width: 22vw;
-  }
 }
