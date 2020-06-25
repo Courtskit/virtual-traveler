@@ -1,0 +1,128 @@
+/*  - - - - - - TABLET VIEW - - - - - -  */
+/* - - specific city page - - */
+.body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+#bodyBackgroundCity{
+  background: url(img/city4.jpeg);
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+} 
+
+#cityTitle {
+  font-size: 3.5vw;
+  letter-spacing: 5px;
+  margin: 4vh auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: rgb(74, 74, 74);
+  text-shadow: .65px .65px .5px rgb(74, 74, 74);
+
+}
+
+#map {
+  grid-column: span 2;
+  margin: 0px auto 2vh auto;
+  width: 90vw;
+  height: 36vh;
+  box-shadow: 0px 0px 7px 2px rgba(198, 198, 198, 0.95);
+  border-radius: 2px;
+}
+
+.infoBox {
+  box-shadow: 0px 0px 7px 2px rgba(198, 198, 198, 0.95);
+  width: 40vw;
+  margin: auto; 
+  background-color: rgba(198, 198, 198, 0.95);
+  color: rgb(53, 53, 53);
+  border-radius: 2px;
+}
+
+.description {
+  overflow: scroll;
+  font-size: 2vw;
+  height: 40vw;
+  width: 36vw;
+  margin: auto;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.park-name {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.subjectNav {
+  font-size: 1.8vw;
+  padding: 1.4vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.smallHeader {
+  text-decoration: none;
+  color: rgb(74, 74, 74);
+  font-size: 130%;
+  font-weight: 600;
+}
+
+img {
+  width: 14vw;
+}
+
+/*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
+@media screen and (min-width: 736px) {
+  /* - - specific city page - - */
+  .cityTitle {
+    font-size: 2.5vw;
+  }
+
+  #map {
+    grid-column: none;
+    grid-column-start: 2;
+    grid-row: span 2;
+    margin-bottom: none;
+    width: 40vw;
+    height: 72vh;
+    order: 2;
+  } 
+
+  img {
+    width: 10vw;
+  }
+
+  .infoBox:nth-child(2) {
+    order: 3;
+  }
+
+  .infoBox {
+    border: .1px solid rgb(227, 227, 227);
+    width: 40vw;
+    height: 35vh;
+  }
+
+  .description {
+    font-size: 1vw;
+    height: 30vh;
+    width: 36vw;
+  }
+
+  .subjectNav {
+    font-size: 1.2vw;
+  }
+}
