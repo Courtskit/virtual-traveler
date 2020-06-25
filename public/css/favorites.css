@@ -1,37 +1,64 @@
-#bodyFavoritesPage {
-  /* position: fixed; */
+/* #bodyFavoritesPage {
+  position: fixed;
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+} */
+
+#bodyBackgroundCity{
+  background: url(img/city4.jpeg);
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif; 
+}
+.main{
+  max-height: 85vh;
+  max-width: 85vw;
+  margin: 10px auto;
+}
+.bodyFavoritesPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.favoriteImages {
+  border: rgb(255, 255, 255) solid 1px;
+  height: 80%;
+  width: 80%;
+  margin: 1vh;
+}
+.photoCaption {
+  margin: auto;
+  font-weight: 600;
+  font-size: 2.5vw;
+  padding: 5px;
+  color: rgb(53, 53, 53);
+}
+.background{
+  background-color: rgba(198, 198, 198, 0.95);
+  box-shadow: 0px 0px 7px 2px rgba(198, 198, 198, 0.95);
+  text-align: center;
+  margin: auto;
 }
 
 /* Background image doesn't work on my page but may work on yours. */
-body{
-  background-image: url(img/city4.jpeg);
-  overflow-y: hidden;
-  background-size: cover;
-  height: 100vh;
-  display: fixed;
-  overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-}
 
 /* NAV BAR IN THE HEADER, STYLE AS NEEDED HERE */
-header {
+/* header {
   grid-column: 1 / span 8;
   height: 50%;
-}
+} */
 
 
-.favoriteImages {
+/* .favoriteImages {
   border: black solid 1px;
   height: 100%;
   width: 100%;
-}
+} */
 
-#img1 {
+/* #img1 {
   grid-column: 2 / span 2;
   grid-row: 3 / span 2;
 }
@@ -49,17 +76,17 @@ header {
 #img4 {
   grid-column: 5 / span 2;
   grid-row: 6 / span 2;
-}
+} */
 
 /* STYLE ALL PHOTO CAPTIONS HERE */
-.photoCaption {
+/* .photoCaption {
   color: green;
   padding-top: 10px;
   text-align: center;
-}
+} */
 
 /* EACH CAPTION'S PAGE POSITIONING */
-#caption1 {
+/* #caption1 {
   grid-column: 2 / span 2;
   grid-row: 5;
 }
@@ -77,12 +104,12 @@ header {
 #caption4{
   grid-column: 5 / span 2;
   grid-row: 8;
-}
+} */
 
 /* Footer images not appearing on mine but will probably appear on yours. They should only occupy the bottom half of row 8, and we may need to adjust image sizes in the code somewhere. */
-.footerImages {
+/* .footerImages {
   grid-column: 6 / span 2;
   grid-row: 8;
   height: -50%;
-}
+} */
 
