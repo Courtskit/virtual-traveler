@@ -46,9 +46,13 @@
         <nav class="subjectNav">
           <a href="">Parks</a>
         </nav>
-        <p class="description">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt consequatur ad, iste autem aspernatur possimus aliquam fugit ut distinctio nobis quos dignissimos officia ducimus. Esse dolorum eveniet ratione illo voluptas.
-        </p>
+        
+        <section class="description">
+          <% parkInfo.forEach(value => { %>
+            <h4 class="park-name"><%= value.name %></h4>
+            <p><%= value.description %></p>
+            <% }); %>
+        </section>
       </div>
       <div class="infoBox">
         <nav class="subjectNav">
