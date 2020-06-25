@@ -13,69 +13,67 @@
 </head>
 
 <body class="body" id="bodyBackgroundCity">
-    <header>
-      <nav class="navSection">
-        <a class="mainNav" href="/">Home</a>
-        <a class="mainNav" href="">Favorites</a>
-      </nav>
-          <form action="/pages" method="POST">
+  <header>
+    <nav class="navSection">
+      <a class="mainNav" href="/">Home</a>
+      <a class="mainNav" href="/favorites">Favorites</a>
+    </nav>
+    <form action="/pages" method="POST">
       <input type="hidden" name="name" value="<%= foodData[0].city %>">
       <input type="hidden" name="imgUrl" value="<%= cityPic %>">
       <h2 id="cityTitle"><%= foodData[0].city %> <button type="submit">Add to
           Favorites</button></h2>
     </form>
-    </header>
-    <main class="main">
-      <div id="map">
-        <script>
-          var test = '<%- latLng %>';
-          var testArr = test.split(',');
-          testArr[0] = parseFloat(testArr[0]);
-          testArr[1] = parseFloat(testArr[1]);
-          mapboxgl.accessToken =
-            'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
-          var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: testArr,
-            zoom: 11.15
-          });
-        </script>
-      </div>
-      <div class="infoBox">
-        <nav class="subjectNav">
-          <a href="">Parks</a>
-        </nav>
-        
+  </header>
+  <main class="main">
+    <div id="map">
+      <script>
+        var test = '<%- latLng %>';
+        var testArr = test.split(',');
+        testArr[0] = parseFloat(testArr[0]);
+        testArr[1] = parseFloat(testArr[1]);
+        mapboxgl.accessToken =
+          'pk.eyJ1IjoiYW5kcmV3Y3MxNDkiLCJhIjoiY2tic2drb3ljMDFkZTJ5cnAwNGEwY2NlaiJ9.wByLSI3WzhKbfx8NvguW7g';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: testArr,
+          zoom: 11.15
+        });
+      </script>
+    </div>
+    <div class="infoBox">
+      <nav class="subjectNav">
+        <a href="">Parks</a>
+      </nav>
         <section class="description">
           <% parkInfo.forEach(value => { %>
             <h4 class="park-name"><%= value.name %></h4>
             <p><%= value.description %></p>
             <% }); %>
         </section>
-      </div>
-      <div class="infoBox">
-        <nav class="subjectNav">
-          <a href="">Top Food</a>
-        </nav>
-        <section class="description">
-          <% foodData.forEach(value => { %>
-          <h5><%= value.name %></h5>
-          <h5><%= value.price %></h5>
-          <p>Rating:<%= value.rating %>
-            <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
-          <% }) %>
-        </section>
-      </div>
-    </main>
-    <span class="footerImages">
-      <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/andrew.png"
-          alt=""></a>
-
-      <img class="profileImages" src="css/img/courtney.png" alt="">
-      <img class="profileImages" src="css/img/diane.png" alt="">
-      <img class="profileImages" src="css/img/robert.png" alt="">
-    </span>
+    </div>
+    <div class="infoBox">
+      <nav class="subjectNav">
+        <a href="">Top Food</a>
+      </nav>
+      <section class="description">
+        <% foodData.forEach(value => { %>
+        <h5><%= value.name %></h5>
+        <h5><%= value.price %></h5>
+        <p>Rating:<%= value.rating %>
+          <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
+        <% }) %>
+      </section>
+    </div>
+  </main>
+  <span class="footerImages">
+    <a href="https://www.linkedin.com/in/andrew149/"><img class="profileImages" src="css/img/andrew.png" alt=""></a>
+    <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/courtney.png"
+        alt=""></a>
+    <a href="https://www.linkedin.com/in/dianestephani/"><img class="profileImages" src="css/img/diane.png" alt=""></a>
+    <a href="https://www.linkedin.com/in/robert-carter-035baa165/"><img class="profileImages" src="css/img/robert.png" alt=""></a>
+  </span>
 
 </body>
 
