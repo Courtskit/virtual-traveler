@@ -7,17 +7,5 @@ CREATE TABLE travel
   image_url VARCHAR(255)
 );
 
-INSERT INTO travel
-  (
-  name,
-  image_url
-  )
-
-VALUES
-  (
-    'value 1',
-    'value 2'
-);
-
 SELECT *
 FROM travel;
