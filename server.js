@@ -30,20 +30,19 @@ const help = require('./libs/helper.js');
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
-app.get('/favorites', locationRequest);
+app.get('/favorites', showFavorites);
 app.get('/delete/:travel_id', deleteFavoriteLocation);
 
 // Function to remove a favorited location from the database.
 function deleteFavoriteLocation(request, response) {
 
   let id = request.params.travel_id;
-  console.log(id);
   let sql = 'DELETE FROM travel WHERE id=$1;';
   let safeVals = [id];
 
   client.query(sql, safeVals)
     .then(sqlResults => {
-      response.redirect(`/`);
+      response.redirect(`/favorites`);
     }).catch(err => error(err, response));
 }
 
@@ -81,7 +80,7 @@ function addToDatabase(request, response) {
     }).catch(error => console.log(error))
 }
 
-function locationRequest(request, response) {
+function showFavorites(request, response) {
 
   let sql = 'SELECT * FROM travel;';
   client.query(sql)
