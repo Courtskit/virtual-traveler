@@ -46,10 +46,12 @@
       <nav class="subjectNav">
         <a href="">Parks</a>
       </nav>
-      <p class="description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt consequatur ad, iste autem aspernatur possimus
-        aliquam fugit ut distinctio nobis quos dignissimos officia ducimus. Esse dolorum eveniet ratione illo voluptas.
-      </p>
+        <section class="description">
+          <% parkInfo.forEach(value => { %>
+            <h4 class="park-name"><%= value.name %></h4>
+            <p><%= value.description %></p>
+            <% }); %>
+        </section>
     </div>
     <div class="infoBox">
       <nav class="subjectNav">
@@ -67,12 +69,9 @@
   </main>
   <span class="footerImages">
     <a href="https://www.linkedin.com/in/andrew149/"><img class="profileImages" src="css/img/andrew.png" alt=""></a>
-
     <a href="https://www.linkedin.com/in/courtneycodes/"><img class="profileImages" src="css/img/courtney.png"
         alt=""></a>
-
     <a href="https://www.linkedin.com/in/dianestephani/"><img class="profileImages" src="css/img/diane.png" alt=""></a>
-
     <a href="https://www.linkedin.com/in/robert-carter-035baa165/"><img class="profileImages" src="css/img/robert.png" alt=""></a>
   </span>
 
