@@ -39,13 +39,14 @@ function searchForm(request, response) {
 // When the user selected 'add to favorites', the location name and 
 // img url will be pushed into the database. 
 function addToDatabase(request, response) {
-  console.log(request.body)
-  let name = request.body;
+  console.log(request.body.name)
+  let name = request.body.name;
   let sql = 'SELECT * FROM travel WHERE name = $1;';
   let safeValue = [name];
   client.query(sql, safeValue)
     .then(result => {
-      if (!result.rowCount) {
+      console.log(result);
+      if (result.rowCount < 1) {
         let {
           name,
           imgUrl
@@ -55,22 +56,19 @@ function addToDatabase(request, response) {
         client.query(sqlAdd, safeValues)
           .then(store => {
             let id = store.rows[0].id;
-            response.status(200).redirect(`/pages/${id}`)
+            response.status(200).redirect(`/searches`)
           }).catch(error => console.log(error))
       } else {
-        response.status(200).redirect(`/pages/${result.rows[0].id}`);
+        response.status(200).redirect(`/searches`)
       }
     }).catch(error => console.log(error))
 }
 
 function locationRequest(request, response) {
-  // let id = request.params.id;
-  // let sql = 'SELECT * FROM travel WHERE id=$1;';
+
   let sql = 'SELECT * FROM travel;';
-  // let safeValues = [id];
   client.query(sql)
     .then(display => {
-      // console.log(display);
       response.status(200).render('./pages/favorites.ejs', {
         favorites: display.rows
       });
@@ -86,20 +84,3 @@ client.connect()
   })
 
 module.exports.client = client;
-
-// This is roberts code from 'favorites.ejs'. It needed to be removed from the favorites
-// page temporarily for rendering purposes. 
-
-//  <section class="">
-// <% homeArray.forEach(value => { %>
-// <form action="/favorites" method="POST">
-//   <input type=hidden name="image_url" value="<%=value.image_url%>" />
-//   <img src=<%= value.image_url %> alt=<%= value.name %> />
-//   <input type=hidden name="name" value="<%=value.name%>" />
-//   <p><%= value.name %></p>
-// </form>
-// <form action="/delete/<%= value.id %>?_method=delete" method="POST">
-//   <button>Delete from Favorites</button>
-// </form>
-// <% }) %>
-// </section> 
