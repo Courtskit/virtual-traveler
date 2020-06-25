@@ -1,0 +1,89 @@
+#bodyFavoritesPage {
+  /* position: fixed; */
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+}
+
+/* Background image doesn't work on my page but may work on yours. */
+body{
+  background-image: url(img/city4.jpeg);
+  overflow-y: hidden;
+  background-size: cover;
+  height: 100vh;
+  display: fixed;
+  overflow: hidden;  
+}
+
+/* NAV BAR IN THE HEADER, STYLE AS NEEDED HERE */
+header {
+  background-color: black;
+  color: white;
+  grid-column: 1 / span 8;
+  height: 50%;
+}
+
+
+.favoriteImages {
+  border: black solid 1px;
+  height: 100%;
+  width: 100%;
+}
+
+#img1 {
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 2;
+}
+
+#img2 {
+  grid-column: 5 / span 2;
+  grid-row: 3 / span 2;
+}
+
+#img3 {
+  grid-column: 2 / span 2;
+  grid-row: 6 / span 2;
+}
+
+#img4 {
+  grid-column: 5 / span 2;
+  grid-row: 6 / span 2;
+}
+
+/* STYLE ALL PHOTO CAPTIONS HERE */
+.photoCaption {
+  color: green;
+  padding-top: 10px;
+  text-align: center;
+}
+
+/* EACH CAPTION'S PAGE POSITIONING */
+#caption1 {
+  grid-column: 2 / span 2;
+  grid-row: 5;
+}
+
+#caption2 {
+  grid-column: 5 / span 2;
+  grid-row: 5;
+}
+
+#caption3 {
+  grid-column: 2 / span 2;
+  grid-row: 8;
+}
+
+#caption4{
+  grid-column: 5 / span 2;
+  grid-row: 8;
+}
+
+/* Footer images not appearing on mine but will probably appear on yours. They should only occupy the bottom half of row 8, and we may need to adjust image sizes in the code somewhere. */
+.footerImages {
+  grid-column: 6 / span 2;
+  grid-row: 8;
+  height: -50%;
+}
+
