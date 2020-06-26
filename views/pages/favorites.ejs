@@ -27,6 +27,9 @@
       <section class="background">
         <img class="favoriteImages" src="<%= value.image_url %>">
         <p class="photoCaption"><%= value.name %></p>
+        <form class="delete-button" action="/delete/<%= value.id %>?_method=DELETE" method="POST">
+          <button><a href="/delete/<%= value.id %>">Remove from Favorites</a></button>
+        </form>
       </section>
       <% }); %>
     </div>

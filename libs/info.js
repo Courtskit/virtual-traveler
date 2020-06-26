@@ -6,15 +6,10 @@ const superagent = require('superagent');
 require('ejs');
 require('dotenv').config();
 const app = express();
-const pg = require('pg');
-const PORT = process.env.PORT || 3001;
-const client = new pg.Client(process.env.DATABASE_URL);
-
-// helper file module
-const help = require('./helper.js');
+const cors = require('cors');
+app.use(cors());
 
 // constructor 
-// TODO: sort them by their rating
 function Restaurant(obj) {
   this.name = obj.name;
   this.city = obj.location.city;
@@ -50,9 +45,7 @@ async function handler(req, res) {
 
   let npsGovUrl = `https://developer.nps.gov/api/v1/parks?q=${search}&api_key=${process.env.NPS_GOV_API_KEY}&limit=5`
 
-  // console.log(teleportUrl);
-  
-  // gather api data from teleport api and yelp api
+  // gather api data from teleport.org, nps.gov and yelp.com api's
   let data, data2, data3;
   try {
     let teleportUrl = `https://api.teleport.org/api/urban_areas/slug:${search}/images/`;
