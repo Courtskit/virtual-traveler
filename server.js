@@ -57,13 +57,11 @@ function searchForm(request, response) {
 // When the user selected 'add to favorites', the location name and 
 // img url will be pushed into the database. 
 function addToDatabase(request, response) {
-  console.log(request.body.name)
   let name = request.body.name;
   let sql = 'SELECT * FROM travel WHERE name = $1;';
   let safeValue = [name];
   client.query(sql, safeValue)
     .then(result => {
-      console.log(result);
       if (result.rowCount < 1) {
         let {
           name,
