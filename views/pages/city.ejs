@@ -21,7 +21,9 @@
     <form action="/pages" method="POST">
       <input type="hidden" name="name" value="<%= foodData[0].city %>">
       <input type="hidden" name="imgUrl" value="<%= cityPic %>">
-      <h2 id="cityTitle"><%= foodData[0].city %> <button type="submit">Add to
+      <h2 id="cityTitle"><%= foodData[0].city %> 
+      </br>
+      <button type="submit">Add to
           Favorites</button></h2>
     </form>
   </header>
@@ -44,7 +46,7 @@
     </div>
     <div class="infoBox">
       <nav class="subjectNav">
-        <h3 class="smallHeader">Parks</h3>
+        <h3 class="smallHeader">National Parks</h3>
       </nav>
         <section class="description">
           <% parkInfo.forEach(value => { %>
@@ -59,13 +61,16 @@
       </nav>
       <section class="description">
         <% foodData.forEach(value => { %>
-        <h5><%= value.name %></h5>
+        <h5 id="foodname"><%= value.name %></h5>
         <h5><%= value.price %></h5>
         <p>Rating:<%= value.rating %>
-          <img src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
+        </br>
+          <img class="foodpics" src="<%= value.yelpUrl %>" alt="<%= value.name %>" /></p>
+        </br>
+        </br>
         <% }) %>
       </section>
-    </div>
+      </div>
   </main>
   <span class="footerImages">
     <a href="https://www.linkedin.com/in/andrew149/"><img class="profileImages" src="css/img/andrew.png" alt=""></a>

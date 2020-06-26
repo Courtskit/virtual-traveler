@@ -55,7 +55,19 @@
   height: 40vw;
   width: 36vw;
   margin: auto;
+  text-align: center;
+  /* clear: right; */
 }
+
+#foodname{
+  font-weight: bold;
+}
+
+/* .foodpics{
+  float: left;
+  margin: auto;
+  /* clear: right; */
+/* } */ 
 
 .description::-webkit-scrollbar {
   display: none;
@@ -64,6 +76,7 @@
 .park-name {
   text-align: center;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 .subjectNav {
