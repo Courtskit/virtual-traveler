@@ -2,18 +2,7 @@
 
 /*  - - - - - - TABLET VIEW - - - - - -  */
 
-<<<<<<< HEAD
-/* nav bar for all pages */
-nav {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 2vw;
-  margin-top: 6px;
-}
-
-=======
 /* FOR ALL PAGES */
->>>>>>> 44f77e5cf528e79d0879c00d5d7d039056ecde52
 .profileImages{
   width: 42px;
   height: 42px;
@@ -51,36 +40,12 @@ nav {
 /*  - - - - - - LARGE SCREEN VIEW - - - - - -  */
 @media screen and (min-width: 736px) {
   /* - - use for all pages - - */
-<<<<<<< HEAD
-  nav {
-    font-size: 15px;
-  }
-
-  /* - - specific city page - - */
-  .cityTitle {
-    font-size: 2.5vw;
-  }
-
-  #map {
-    grid-column: none;
-    grid-column-start: 2;
-    grid-row: span 2;
-    margin-bottom: none;
-    width: 40vw;
-    height: 72vh;
-    order: 2;
-  }
-
-  img {
-    width: 10vw;
-=======
   .navSection {
     display: flex;
     justify-content: space-evenly;
     font-size: 1.5vw;
     height: 5vh;
     background-color: rgba(166, 166, 166, 0.544);
->>>>>>> 44f77e5cf528e79d0879c00d5d7d039056ecde52
   }
   
   .mainNav{
@@ -93,30 +58,4 @@ nav {
     font-size: 15px;
   }
 
-<<<<<<< HEAD
-  .inputWidth{
-    width: 22vw;
-  }
 }
-
-/* - - Favorites Page - - */
-
-#bodyFavoritesPage {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
-  grid-template-rows: 12.5% 12.5% 12.5% 12.5%;
-}
-
-#navFavorites {
-  background-color: black;
-  color: white;
-  grid-column: 3 / span 4;
-  grid-row: 1;
-}
-
-=======
-}
->>>>>>> 44f77e5cf528e79d0879c00d5d7d039056ecde52
