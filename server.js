@@ -2,15 +2,19 @@
 
 ///////////////////LIBRARIES/////////////////////////////////
 const express = require('express');
-const superagent = require('superagent');
 require('dotenv').config();
+const cors = require('cors');
 const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3001;
+const methodOverride = require('method-override');
 const client = new pg.Client(process.env.DATABASE_URL);
 require('ejs');
+
 // allows ejs to work - look in views folder for your template
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
+app.use(cors());
 
 // this allows us to see the request.body
 app.use(express.urlencoded({
@@ -28,7 +32,21 @@ const help = require('./libs/helper.js');
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
-app.get('/favorites', locationRequest)
+app.get('/favorites', showFavorites);
+app.get('/delete/:travel_id', deleteFavoriteLocation);
+
+// Function to remove a favorited location from the database.
+function deleteFavoriteLocation(request, response) {
+
+  let id = request.params.travel_id;
+  let sql = 'DELETE FROM travel WHERE id=$1;';
+  let safeVals = [id];
+
+  client.query(sql, safeVals)
+    .then(sqlResults => {
+      response.redirect(`/favorites`);
+    }).catch(err => error(err, response));
+}
 
 // function to display the home page when the user opens the website.
 function searchForm(request, response) {
@@ -39,13 +57,12 @@ function searchForm(request, response) {
 // When the user selected 'add to favorites', the location name and 
 // img url will be pushed into the database. 
 function addToDatabase(request, response) {
-  console.log(request.body)
-  let name = request.body;
+  let name = request.body.name;
   let sql = 'SELECT * FROM travel WHERE name = $1;';
   let safeValue = [name];
   client.query(sql, safeValue)
     .then(result => {
-      if (!result.rowCount) {
+      if (result.rowCount < 1) {
         let {
           name,
           imgUrl
@@ -55,51 +72,32 @@ function addToDatabase(request, response) {
         client.query(sqlAdd, safeValues)
           .then(store => {
             let id = store.rows[0].id;
-            response.status(200).redirect(`/pages/${id}`)
+            response.status(200).redirect(`/searches`)
           }).catch(error => console.log(error))
       } else {
-        response.status(200).redirect(`/pages/${result.rows[0].id}`);
+        response.status(200).redirect(`/searches`)
       }
     }).catch(error => console.log(error))
 }
 
-function locationRequest(request, response) {
-  // let id = request.params.id;
-  // let sql = 'SELECT * FROM travel WHERE id=$1;';
+// function to display the favorited locations on the favorites.ejs page. 
+// this info is pulled from the existing database info.
+function showFavorites(request, response) {
+
   let sql = 'SELECT * FROM travel;';
-  // let safeValues = [id];
   client.query(sql)
     .then(display => {
-      // console.log(display);
       response.status(200).render('./pages/favorites.ejs', {
         favorites: display.rows
       });
     }).catch(err => help.err(err, response));
 }
+
 ///////////////////CONNECT//////////////////////
 client.on('error', err => console.log(err));
 client.connect()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`listening on ${PORT}`);
-    })
-  })
-
-module.exports.client = client;
-
-// This is roberts code from 'favorites.ejs'. It needed to be removed from the favorites
-// page temporarily for rendering purposes. 
-
-//  <section class="">
-// <% homeArray.forEach(value => { %>
-// <form action="/favorites" method="POST">
-//   <input type=hidden name="image_url" value="<%=value.image_url%>" />
-//   <img src=<%= value.image_url %> alt=<%= value.name %> />
-//   <input type=hidden name="name" value="<%=value.name%>" />
-//   <p><%= value.name %></p>
-// </form>
-// <form action="/delete/<%= value.id %>?_method=delete" method="POST">
-//   <button>Delete from Favorites</button>
-// </form>
-// <% }) %>
-// </section> 
+    });
+  });
