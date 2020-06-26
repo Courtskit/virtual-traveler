@@ -22,6 +22,7 @@
 .bodyFavoritesPage {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  /* Change this if needed to make room for the delete button */
   grid-template-rows: 150px 150px 150px;
 }
 .favoriteImages {
@@ -43,6 +44,7 @@
   text-align: center;
   margin: 3px;
 }
+
 
 /* Background image doesn't work on my page but may work on yours. */
 
