@@ -99,8 +99,5 @@ client.connect()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`listening on ${PORT}`);
-    })
-  })
-
-// export client library to use inside of info.js.
-module.exports.client = client;
+    });
+  });
