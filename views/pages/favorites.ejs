@@ -19,24 +19,26 @@
       <a class="mainNav" onclick="history.back()">Back</a>
     </nav>
   </header>
-</br>
-</br>
-</br>
-</br>
+  </br>
+  </br>
+  </br>
+  </br>
   <main class="main">
 
     <div class="bodyFavoritesPage">
-      <% favorites.forEach(value => { %>
-      <section class="background">
-        <img class="favoriteImages" src="<%= value.image_url %>">
-        <p class="photoCaption"><%= value.name %></p>
-        <form class="delete-button" action="/delete/<%= value.id %>?_method=DELETE" method="POST">
-          <button><a href="/delete/<%= value.id %>">Remove from Favorites</a></button>
-        </form>
-      </section>
-      <% }); %>
+      <% favorites.forEach(value=> { %>
+        <section class="background">
+          <img class="favoriteImages" src="<%= value.image_url %>">
+          <p class="photoCaption">
+            <%= value.name %>
+          </p>
+          <form class="delete-button" action="/delete/<%= value.id %>?_method=DELETE" method="POST">
+            <button><a href="/delete/<%= value.id %>">Remove from Favorites</a></button>
+          </form>
+        </section>
+        <% }); %>
     </div>
-    
+
   </main>
 
   <span class="footerImages">

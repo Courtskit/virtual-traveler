@@ -8,7 +8,7 @@ const app = express();
 const pg = require('pg');
 const PORT = process.env.PORT || 3001;
 const methodOverride = require('method-override');
-const client = new pg.Client(process.env.DATABASE_URL);
+const client = new pg.Client("postgres://duqbmhpzblhjfx:fca264512a9d6ac17c078ccadd0ecaaac33dc73404d60c9344c8830d26d16a32@ec2-52-20-248-222.compute-1.amazonaws.com:5432/de9d3k734nsrc0");
 require('ejs');
 
 // allows ejs to work - look in views folder for your template
@@ -28,7 +28,7 @@ app.use(express.static('./public'));
 const info = require('./libs/info.js');
 const help = require('./libs/helper.js');
 
-///////////////////ROUTES//////////////////////
+/////////////////ROUTES//////////////////////
 app.get('/', searchForm);
 app.get('/searches', info.handler);
 app.post('/pages', addToDatabase);
