@@ -99,5 +99,6 @@ client.connect()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`listening on ${PORT}`);
-    });
-  });
+    })
+  })
+  .catch();
