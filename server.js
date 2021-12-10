@@ -95,9 +95,11 @@ function showFavorites(request, response) {
 
 ///////////////////CONNECT//////////////////////
 client.on('error', err => console.log(err));
-client.connect()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`listening on ${PORT}`);
-    });
-  });
+app.listen(PORT, () => console.info(`listening on port ${PORT}`));
+
+// client.connect()
+//   .then(() => {
+//     app.listen(PORT, () => {
+//       console.log(`listening on ${PORT}`);
+//     });
+//   });
